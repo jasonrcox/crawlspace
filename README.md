@@ -9,7 +9,7 @@ Millennia ago, a panspermia artificial intelligence probe landed on Earth and we
 ## Current Status
 
 ### ✅ Completed
-- **Project Setup**: Godot 4.3 with mobile compatibility and pixel-art rendering
+- **Project Setup**: Godot 4.5.1 with mobile compatibility and pixel-art rendering
 - **Autoload Systems**:
   - EventBus (global signals)
   - GameManager (game state, progression)
@@ -95,7 +95,7 @@ crawlspace/
 │   ├── audio/            # Sound effects and music
 │   └── shaders/          # Custom shaders
 └── data/                  # Game data resources
-    └── saves/            # Save files
+	└── saves/            # Save files
 ```
 
 ## Controls (Development)
@@ -108,8 +108,8 @@ crawlspace/
 
 ## Technical Specs
 
-- **Engine**: Godot 4.3
-- **Resolution**: 320x180 base (scales to 1280x720)
+- **Engine**: Godot 4.5.1 (requires 4.5+ for type system compatibility)
+- **Resolution**: 640x360 base (scales to 1280x720)
 - **Rendering**: Pixel-perfect with nearest neighbor filtering
 - **Target Platform**: Desktop and Mobile (touch controls)
 - **Art Style**: Top-down pixel art with dark atmospheric earth tones

@@ -126,7 +126,28 @@ Main (main.tscn)
 
 ### Common Pitfalls
 
-**1. Documentation Comments**
+**1. Typed Arrays and .duplicate() (CRITICAL FOR GODOT 4.5)**
+```gdscript
+# THIS WILL CAUSE TYPE ERROR IN GODOT 4.5:
+var my_array: Array[String] = []
+# Later in load function:
+my_array = data["key"].duplicate()  # ERROR: duplicate() returns untyped Array
+
+# CORRECT PATTERN - Use clear and iterate:
+var my_array: Array[String] = []
+# Later in load function:
+if data.has("key"):
+	my_array.clear()
+	for item in data["key"]:
+		my_array.append(item)
+```
+**Why this happens**: In Godot 4.5, `.duplicate()` returns an untyped `Array`, not `Array[T]`. The strict type system won't allow assigning untyped to typed arrays. This affects all typed arrays in save/load functions.
+
+**Where we fixed this**:
+- `game_manager.gd:185-191` - `unlocked_technologies` and `unlocked_achievements`
+- `society_manager.gd:217-219` - `cultural_traits`
+
+**2. Documentation Comments**
 ```gdscript
 # Good
 # This function does X
@@ -135,32 +156,32 @@ Main (main.tscn)
 ## This function does X
 ```
 
-**2. Preload vs Load**
+**3. Preload vs Load**
 ```gdscript
 # Bad - fails if file doesn't exist
 var scene = preload("res://scenes/foo.tscn")
 
 # Good - conditional loading
 if ResourceLoader.exists("res://scenes/foo.tscn"):
-    var scene = load("res://scenes/foo.tscn")
+	var scene = load("res://scenes/foo.tscn")
 ```
 
-**3. Match Statements Must Be Exhaustive**
+**4. Match Statements Must Be Exhaustive**
 ```gdscript
 # Bad - missing case causes parse error
 match stage:
-    SocietyStage.TRIBAL:
-        do_something()
+	SocietyStage.TRIBAL:
+		do_something()
 
 # Good - all cases covered
 match stage:
-    SocietyStage.SCATTERED:
-        pass
-    SocietyStage.TRIBAL:
-        do_something()
+	SocietyStage.SCATTERED:
+		pass
+	SocietyStage.TRIBAL:
+		do_something()
 ```
 
-**4. UI for Small Viewport**
+**5. UI for Small Viewport**
 - Viewport is 640x360 (pixel art style)
 - Use absolute positioning or test UI scales properly
 - Buttons should be minimum 40px height
@@ -262,7 +283,12 @@ Crawlspace scene logs creature creation:
 
 ## Godot Version
 
-**Current**: Godot 4.5.1
-**Required**: Godot 4.3+
+**Current**: Godot 4.5.1 (IMPORTANT: Code written specifically for 4.5)
+**Required**: Godot 4.5+
 
-If syntax errors occur, verify Godot version: `godot --version`
+⚠️ **Critical**: This project uses Godot 4.5.1 which has stricter type checking than 4.3/4.4. Key differences:
+- Typed arrays (`Array[String]`) are strictly enforced
+- `.duplicate()` returns untyped `Array`, not `Array[T]`
+- Must use clear-and-iterate pattern for typed array loading (see Common Pitfalls #1)
+
+If syntax or type errors occur, verify Godot version: `godot --version`
