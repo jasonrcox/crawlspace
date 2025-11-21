@@ -214,7 +214,9 @@ func load_save_data(data: Dictionary):
 	if data.has("max_population"):
 		max_population = data["max_population"]
 	if data.has("cultural_traits"):
-		cultural_traits = data["cultural_traits"].duplicate()
+		cultural_traits.clear()
+		for trait_item in data["cultural_traits"]:
+			cultural_traits.append(trait_item)
 	if data.has("building_count_by_type"):
 		building_count_by_type = data["building_count_by_type"].duplicate()
 	if data.has("total_births"):

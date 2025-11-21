@@ -182,9 +182,13 @@ func load_save_data(data: Dictionary):
 	if data.has("current_house_type"):
 		current_house_type = data["current_house_type"]
 	if data.has("unlocked_technologies"):
-		unlocked_technologies = data["unlocked_technologies"].duplicate()
+		unlocked_technologies.clear()
+		for tech in data["unlocked_technologies"]:
+			unlocked_technologies.append(tech)
 	if data.has("unlocked_achievements"):
-		unlocked_achievements = data["unlocked_achievements"].duplicate()
+		unlocked_achievements.clear()
+		for achievement in data["unlocked_achievements"]:
+			unlocked_achievements.append(achievement)
 	if data.has("prestige_level"):
 		prestige_level = data["prestige_level"]
 	if data.has("prestige_bonuses"):
