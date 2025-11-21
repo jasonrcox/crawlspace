@@ -1,0 +1,57 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Crawlspace"
+config/description="An idle-sim where an AI probe germinates life in a crawlspace. Watch autonomous creatures build a civilization."
+run/main_scene="res://scenes/main/main.tscn"
+config/features=PackedStringArray("4.5", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/autoload/game_manager.gd"
+ResourceManager="*res://scripts/autoload/resource_manager.gd"
+SaveSystem="*res://scripts/autoload/save_system.gd"
+EventBus="*res://scripts/autoload/event_bus.gd"
+SocietyManager="*res://scripts/autoload/society_manager.gd"
+LayoutGenerator="*res://scripts/autoload/layout_generator.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=2
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Creatures"
+2d_physics/layer_3="Buildings"
+2d_physics/layer_4="Resources"
+
+[physics]
+
+2d/physics_engine="GodotPhysics2D"
+2d/default_gravity=0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

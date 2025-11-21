@@ -1,0 +1,17 @@
+> Create a top-down pixel-style game using the godot game engine.
+ This is an idle-sim style gameplay that takes place in the 
+crawlspace of a house. The backstory is that millenia ago, a 
+small panspermia artificail intelligence probe landed on earth 
+and went dormant. Later when the house was being built, a 
+squirrel seeking refuge accidentally reactivated the probe which 
+ began the process of germinating life suitable for the 
+environment its sensors detected. The players job (acting as the 
+AI) is to operate the life design terminal inside the device. Be 
+creative, design a dark and damp environment with warm earthtones
+ and occasional light brightly shining through the vents into the
+ crawlspace. Also, wind and rain sometimes leak into the 
+crawlspace creating challenges, resources, and sometimes 
+destruction. Be creative and suggest game play ideas and progress
+ via evolution of the creatures and their technologies. The 
+player will hold all device agency for how all these technologies
+ look while creating them in the design terminal. 

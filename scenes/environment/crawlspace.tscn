@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhwkn8obt56hg"]
+
+[ext_resource type="Script" path="res://scripts/crawlspace.gd" id="1_script"]
+
+[node name="Crawlspace" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="EnvironmentLayer" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.4, 0.35, 0.3, 1)
+
+[node name="CreatureLayer" type="Node2D" parent="."]
+
+[node name="BuildingLayer" type="Node2D" parent="."]
+
+[node name="EffectsLayer" type="Node2D" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
